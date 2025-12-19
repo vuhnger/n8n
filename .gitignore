@@ -1,0 +1,6 @@
+# n8n data (inneholder credentials og workflows - IKKE commit!)
+n8n_data/
+
+# Backup filer
+*.tar.gz
+*.backup
