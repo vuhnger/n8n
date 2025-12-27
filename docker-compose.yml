@@ -13,6 +13,9 @@ services:
       - N8N_PROTOCOL=https
       - WEBHOOK_URL=https://n8n.vuhnger.dev/
       - N8N_SECURE_COOKIE=true
+      - N8N_TRUST_PROXY=true
+      - GENERIC_TIMEZONE=Europe/Oslo
+      - TZ=Europe/Oslo
     volumes:
       - ./n8n_data:/home/node/.n8n
     networks:
