@@ -5,12 +5,12 @@
 **Ny konfigurasjon (2025-12-20):**
 Trafikk flyt:
 1. Internet (offentlig tilgjengelig)
-2. NREC Server (158.37.66.204)
+2. NREC Server (<server-ip>)
 3. Caddy Reverse Proxy (port 443, alle interfaces)
 4. n8n Container (port 5678, localhost-only)
 
 **Tidligere konfigurasjon:**
-- Caddy var bound til Tailscale IP (100.124.46.65)
+- Caddy var bound til Tailscale IP (<tailscale-ip>)
 - Tilgang kun via Tailscale VPN
 
 **Endret for å:**
@@ -55,7 +55,7 @@ n8n.vuhnger.dev {
 **Tidligere konfigurasjon (Tailscale-only):**
 ```
 n8n.vuhnger.dev {
-    bind 100.124.46.65
+    bind <tailscale-ip>
     reverse_proxy localhost:5678
 }
 ```
@@ -72,7 +72,7 @@ Se docker-compose.yml filen.
 - Login required for all tilgang
 
 ### Lag 2: MCP Bearer Token Authentication
-- MCP endpoint: `/mcp/628c7c7f-2ddb-420d-a50b-e84598ce1797`
+- MCP endpoint: `/mcp/<mcp-token>`
 - Krever Authorization header med Bearer token
 - Uten token = ingen tilgang
 
@@ -99,9 +99,9 @@ Fil: `~/Library/Application Support/Claude/claude_desktop_config.json` (på loka
         "-y",
         "supergateway",
         "--sse",
-        "https://n8n.vuhnger.dev/mcp/628c7c7f-2ddb-420d-a50b-e84598ce1797",
+        "https://n8n.vuhnger.dev/mcp/<mcp-token>",
         "--header",
-        "Authorization: Bearer 628c7c7f-2ddb-420d-a50b-e84598ce1797"
+        "Authorization: Bearer <mcp-token>"
       ]
     }
   }
@@ -164,12 +164,12 @@ cd ~/n8n && sudo docker compose down
 - Port 443 (HTTPS): 0.0.0.0/0 (n8n tilgang)
 
 ### Tailscale
-- Server IP: 100.124.46.65
+- Server IP: <tailscale-ip>
 - Network: 100.x.x.x/10
 - Status: Installert men ikke påkrevd for n8n-tilgang
 
 ### DNS
-- n8n.vuhnger.dev -> 158.37.66.204 (offentlig IP)
+- n8n.vuhnger.dev -> <server-ip> (offentlig IP)
 
 ## Installerte Pakker
 
@@ -252,7 +252,7 @@ sudo docker compose down && sudo docker compose up -d
 ### 2025-12-19
 - Initial setup med Tailscale-only tilgang
 - HTTPS konfigurert med Let's Encrypt
-- Caddy bound til Tailscale IP (100.124.46.65)
+- Caddy bound til Tailscale IP (<tailscale-ip>)
 
 ---
 

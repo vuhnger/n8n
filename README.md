@@ -6,10 +6,10 @@ Dette er dokumentasjon for n8n installasjon på NREC GOLD Rocky Linux 8 server.
 
 **Server detaljer:**
 - Server: GOLD Rocky Linux 8 (NREC)
-- IPv4: 158.37.66.204
-- IPv6: 2001:700:2:8200::237e
+- IPv4: <server-ip>
+- IPv6: <ipv6-address>
 - Domene: n8n.vuhnger.dev
-- Tailscale IP: 100.124.46.65 (valgfritt)
+- Tailscale IP: <tailscale-ip> (valgfritt)
 - Lokasjon: ~/n8n/
 
 **Teknologier:**
@@ -33,7 +33,7 @@ https://n8n.vuhnger.dev
 
 #### Alternativt (via Tailscale, hvis aktivert):
 ```
-http://100.124.46.65:5678
+http://<tailscale-ip>:5678
 ```
 
 ## 🔐 Sikkerhet
@@ -81,9 +81,9 @@ n8n kan nå brukes som MCP server for Claude Desktop, som gir Claude tilgang til
            "-y",
            "supergateway",
            "--sse",
-           "https://n8n.vuhnger.dev/mcp/628c7c7f-2ddb-420d-a50b-e84598ce1797",
+           "https://n8n.vuhnger.dev/mcp/<mcp-token>",
            "--header",
-           "Authorization: Bearer 628c7c7f-2ddb-420d-a50b-e84598ce1797"
+           "Authorization: Bearer <mcp-token>"
          ]
        }
      }
@@ -97,8 +97,8 @@ n8n kan nå brukes som MCP server for Claude Desktop, som gir Claude tilgang til
    - Claude kan nå bruke n8n workflows som tools
 
 **MCP Endpoint:**
-- URL: `https://n8n.vuhnger.dev/mcp/628c7c7f-2ddb-420d-a50b-e84598ce1797`
-- Auth: Bearer token `628c7c7f-2ddb-420d-a50b-e84598ce1797`
+- URL: `https://n8n.vuhnger.dev/mcp/<mcp-token>`
+- Auth: Bearer token `<mcp-token>`
 
 ## 📁 Filstruktur
 
@@ -204,8 +204,8 @@ ssh nrec "sudo journalctl -u caddy -xe | grep -i cert"
 
 **Verifiser at MCP endpoint er tilgjengelig:**
 ```bash
-curl -I https://n8n.vuhnger.dev/mcp/628c7c7f-2ddb-420d-a50b-e84598ce1797 \
-  -H "Authorization: Bearer 628c7c7f-2ddb-420d-a50b-e84598ce1797"
+curl -I https://n8n.vuhnger.dev/mcp/<mcp-token> \
+  -H "Authorization: Bearer <mcp-token>"
 ```
 
 **Sjekk Claude Desktop logs:**
